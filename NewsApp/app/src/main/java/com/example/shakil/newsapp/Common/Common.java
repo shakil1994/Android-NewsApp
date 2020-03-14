@@ -10,4 +10,15 @@ public class Common {
     public static NewsService getNewsService() {
         return RetrofitClient.getClient(BASE_URL).create(NewsService.class);
     }
+
+    /*http://newsapi.org/v2/top-headlines?sources=bbc-news&apiKey=7cc6f9c8dfa44fe993467007ada10a9e*/
+
+    public static String getAPIUrl(String source, String apiKEY) {
+        StringBuilder apiUrl = new StringBuilder("http://newsapi.org/v2/top-headlines?sources=");
+
+        return apiUrl.append(source)
+                .append("&apiKey=")
+                .append(apiKEY)
+                .toString();
+    }
 }
