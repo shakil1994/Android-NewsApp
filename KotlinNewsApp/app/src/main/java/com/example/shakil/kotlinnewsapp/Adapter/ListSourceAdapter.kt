@@ -1,11 +1,13 @@
 package com.example.shakil.kotlinnewsapp.Adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.shakil.kotlinnewsapp.Interface.ItemClickListener
+import com.example.shakil.kotlinnewsapp.ListNewsActivity
 import com.example.shakil.kotlinnewsapp.Model.WebSite
 import com.example.shakil.kotlinnewsapp.R
 import kotlinx.android.synthetic.main.source_news_layout.view.*
@@ -44,7 +46,10 @@ class ListSourceAdapter(val context: Context, val webSite: WebSite): RecyclerVie
 
         holder.setItemClickListener(object : ItemClickListener {
             override fun onClick(view: View, position: Int) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                val intent = Intent(context, ListNewsActivity::class.java)
+                intent.putExtra("source", webSite.sources!![position].id)
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                context.startActivity(intent)
             }
         })
     }
